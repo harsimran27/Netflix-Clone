@@ -23,6 +23,10 @@ function Banner() {
 
   console.log(movie);
 
+  function truncate(str, n) {
+    return str?.length > n ? str.substring(0, n - 1) + "..." : str;
+  }
+
   return (
     <>
       <header
@@ -34,12 +38,16 @@ function Banner() {
         }}
       >
         <div className="banner_content">
-          <h1>{movie?.name || movie?.title || movie?.original_name}</h1>
+          <h1 className="Banner_title">
+            {movie?.name || movie?.title || movie?.original_name}
+          </h1>
           <div className="banner_buttons">
             <div className="banner_button">Play</div>
             <div className="banner_button">My List</div>
           </div>
-          <h1 className="banner_description">{movie?.overview}</h1>
+          <h1 className="banner_description">
+            {truncate(movie?.overview, 150)}
+          </h1>
         </div>
       </header>
     </>
